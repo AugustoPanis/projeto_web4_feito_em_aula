@@ -3,6 +3,7 @@ import { api } from './api.js';
 export const authService = {
   async login(credentials) {
     const data = await api.post('/login', credentials);
+    console.log('Login com sucesso, redirecionando...');
     if (data.token) {
       localStorage.setItem('token', data.token);
     }

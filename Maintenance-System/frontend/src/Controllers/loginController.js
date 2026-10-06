@@ -1,4 +1,4 @@
-import { authService } from './authService.js';
+import { authService } from '../services/authService.js';
 import { LoginView } from '../views/loginView.js';
 
 export const loginController = {
@@ -14,11 +14,10 @@ export const loginController = {
   },
 
   async handleLogin(credentials) {
-    this.view.setLoading(true);
 
     try {
       await authService.login(credentials);
-      window.location.href = '/dashboard.html';
+      window.location.replace('../pages/dashboard.html');
     } catch (err) {
       this.view.showError(err.message || 'Falha na autenticação');
     }
